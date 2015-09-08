@@ -26,33 +26,47 @@
 extern "C" {
 #endif
 
+typedef union _mediaSource{
+	camera_h camera;
+}mediasource;
+
+
 typedef enum {
 	_RECORDER_EVENT_TYPE_STATE_CHANGE,
 	_RECORDER_EVENT_TYPE_RECORDING_LIMITED,	
 	_RECORDER_EVENT_TYPE_RECORDING_STATUS,
 	_RECORDER_EVENT_TYPE_INTERRUPTED,
+	_RECORDER_EVENT_TYPE_INTERRUPT_COMPLETED,
 	_RECORDER_EVENT_TYPE_AUDIO_STREAM,
 	_RECORDER_EVENT_TYPE_ERROR,
 	_RECORDER_EVENT_TYPE_NUM
 }_recorder_event_e;
 
 typedef enum {
-	_RECORDER_TYPE_AUDIO= 0,
+	_RECORDER_TYPE_AUDIO = 0,
 	_RECORDER_TYPE_VIDEO
 }_recorder_type_e;
 
+typedef enum {
+	_RECORDER_SOURCE_TYPE_UNKNOWN,
+	_RECORDER_SOURCE_TYPE_CAMERA,
+}_recorder_source_type_e;
+
 typedef struct _recorder_s{
 	MMHandleType mm_handle;
-	camera_h camera;
+	mediasource mm_source;
 	void* user_cb[_RECORDER_EVENT_TYPE_NUM];
 	void* user_data[_RECORDER_EVENT_TYPE_NUM];
-	int state;
-	_recorder_type_e  type;
+	unsigned int state;
+	int camera_device_count;
+	_recorder_type_e type;
+	_recorder_source_type_e src_type;
 	int origin_preview_format;
+	int changed_preview_format;
 	double last_max_input_level;
-
 } recorder_s;
 
+static int __convert_recorder_error_code(const char *func, int code);
 #ifdef __cplusplus
 }
 #endif
