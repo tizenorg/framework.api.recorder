@@ -49,19 +49,19 @@ typedef struct recorder_s *recorder_h;
  */
 typedef enum
 {
-	RECORDER_ERROR_NONE = TIZEN_ERROR_NONE,                                 /**< Successful */
-	RECORDER_ERROR_INVALID_PARAMETER = TIZEN_ERROR_INVALID_PARAMETER,       /**< Invalid parameter */
-	RECORDER_ERROR_INVALID_STATE = RECORDER_ERROR_CLASS | 0x02,             /**< Invalid state */
-	RECORDER_ERROR_OUT_OF_MEMORY = TIZEN_ERROR_OUT_OF_MEMORY ,              /**< Out of memory */
-	RECORDER_ERROR_DEVICE = RECORDER_ERROR_CLASS | 0x04,                    /**< Device error */
-	RECORDER_ERROR_INVALID_OPERATION = TIZEN_ERROR_INVALID_OPERATION,       /**< Internal error */
-	RECORDER_ERROR_SOUND_POLICY = RECORDER_ERROR_CLASS | 0x06,              /**< Blocked by Audio Session Manager */
-	RECORDER_ERROR_SECURITY_RESTRICTED = RECORDER_ERROR_CLASS | 0x07,       /**< Restricted by security system policy */
-	RECORDER_ERROR_SOUND_POLICY_BY_CALL = RECORDER_ERROR_CLASS | 0x08,      /**< Blocked by Audio Session Manager - CALL */
+	RECORDER_ERROR_NONE                  = TIZEN_ERROR_NONE,                /**< Successful */
+	RECORDER_ERROR_INVALID_PARAMETER     = TIZEN_ERROR_INVALID_PARAMETER,   /**< Invalid parameter */
+	RECORDER_ERROR_INVALID_STATE         = RECORDER_ERROR_CLASS | 0x02,     /**< Invalid state */
+	RECORDER_ERROR_OUT_OF_MEMORY         = TIZEN_ERROR_OUT_OF_MEMORY ,      /**< Out of memory */
+	RECORDER_ERROR_DEVICE                = RECORDER_ERROR_CLASS | 0x04,     /**< Device error */
+	RECORDER_ERROR_INVALID_OPERATION     = TIZEN_ERROR_INVALID_OPERATION,   /**< Internal error */
+	RECORDER_ERROR_SOUND_POLICY          = RECORDER_ERROR_CLASS | 0x06,     /**< Blocked by Audio Session Manager */
+	RECORDER_ERROR_SECURITY_RESTRICTED   = RECORDER_ERROR_CLASS | 0x07,     /**< Restricted by security system policy */
+	RECORDER_ERROR_SOUND_POLICY_BY_CALL  = RECORDER_ERROR_CLASS | 0x08,     /**< Blocked by Audio Session Manager - CALL */
 	RECORDER_ERROR_SOUND_POLICY_BY_ALARM = RECORDER_ERROR_CLASS | 0x09,     /**< Blocked by Audio Session Manager - ALARM */
-	RECORDER_ERROR_ESD = RECORDER_ERROR_CLASS | 0x0a,                       /**< ESD situation */
-	RECORDER_ERROR_OUT_OF_STORAGE = RECORDER_ERROR_CLASS | 0x0b,            /**< Out of storage */
-	RECORDER_ERROR_PERMISSION_DENIED = TIZEN_ERROR_PERMISSION_DENIED,       /**< The access to the resources can not be granted */
+	RECORDER_ERROR_ESD                   = RECORDER_ERROR_CLASS | 0x0a,     /**< ESD situation */
+	RECORDER_ERROR_OUT_OF_STORAGE        = RECORDER_ERROR_CLASS | 0x0b,     /**< Out of storage */
+	RECORDER_ERROR_PERMISSION_DENIED     = TIZEN_ERROR_PERMISSION_DENIED,   /**< The access to the resources can not be granted */
 	RECORDER_ERROR_NOT_SUPPORTED         = TIZEN_ERROR_NOT_SUPPORTED,       /**< The feature is not supported */
 } recorder_error_e;
 
@@ -420,8 +420,8 @@ int recorder_destroy(recorder_h recorder);
  * @see	recorder_create_audiorecorder()
  * @see	recorder_unprepare()
  * @see	recorder_set_audio_encoder()
- * @see recorder_set_video_encoder()
- * @see recorder_set_file_format()
+ * @see	recorder_set_video_encoder()
+ * @see	recorder_set_file_format()
  */
 int recorder_prepare(recorder_h recorder);
 
@@ -470,14 +470,14 @@ int recorder_unprepare(recorder_h recorder);
  * @pre The recorder state must be #RECORDER_STATE_READY by recorder_prepare() or #RECORDER_STATE_PAUSED by recorder_pause(). \n
  *      The filename should be set by recorder_set_filename().
  * @post The recorder state will be #RECORDER_STATE_RECORDING.
- * @see recorder_pause()
- * @see recorder_commit()
- * @see recorder_cancel()
- * @see recorder_set_audio_encoder()
- * @see recorder_set_filename()
- * @see recorder_set_file_format()
+ * @see	recorder_pause()
+ * @see	recorder_commit()
+ * @see	recorder_cancel()
+ * @see	recorder_set_audio_encoder()
+ * @see	recorder_set_filename()
+ * @see	recorder_set_file_format()
  * @see	recorder_recording_status_cb()
- * @see recorder_set_filename()
+ * @see	recorder_set_filename()
  */
 int recorder_start(recorder_h recorder);
 
@@ -948,7 +948,7 @@ int recorder_unset_state_changed_cb(recorder_h recorder);
  * @retval #RECORDER_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
- * @see recorder_unset_interrupted_cb()
+ * @see	recorder_unset_interrupted_cb()
  * @see	recorder_interrupted_cb()
  */
 int recorder_set_interrupted_cb(recorder_h recorder, recorder_interrupted_cb callback,
@@ -963,7 +963,7 @@ int recorder_set_interrupted_cb(recorder_h recorder, recorder_interrupted_cb cal
  * @retval #RECORDER_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
- * @see     recorder_set_interrupted_cb()
+ * @see	recorder_set_interrupted_cb()
  */
 int recorder_unset_interrupted_cb(recorder_h recorder);
 
@@ -983,9 +983,9 @@ int recorder_unset_interrupted_cb(recorder_h recorder);
  * @retval #RECORDER_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
- * @pre		The recorder state should be #RECORDER_STATE_READY or #RECORDER_STATE_CREATED.
- * @see recorder_unset_audio_stream_cb()
- * @see recorder_audio_stream_cb()
+ * @pre	The recorder state should be #RECORDER_STATE_READY or #RECORDER_STATE_CREATED.
+ * @see	recorder_unset_audio_stream_cb()
+ * @see	recorder_audio_stream_cb()
  */
 int recorder_set_audio_stream_cb(recorder_h recorder, recorder_audio_stream_cb callback, void* user_data);
 
@@ -1014,8 +1014,8 @@ int recorder_unset_audio_stream_cb(recorder_h recorder);
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
  * @post  recorder_recording_status_cb() will be invoked.
- * @see recorder_unset_recording_status_cb()
- * @see recorder_recording_status_cb()
+ * @see	recorder_unset_recording_status_cb()
+ * @see	recorder_recording_status_cb()
  */
 int recorder_set_recording_status_cb(recorder_h recorder, recorder_recording_status_cb callback, void *user_data);
 
@@ -1028,7 +1028,7 @@ int recorder_set_recording_status_cb(recorder_h recorder, recorder_recording_sta
  * @retval #RECORDER_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
- * @see recorder_set_recording_status_cb()
+ * @see	recorder_set_recording_status_cb()
  */
 int recorder_unset_recording_status_cb(recorder_h recorder);
 
@@ -1044,9 +1044,9 @@ int recorder_unset_recording_status_cb(recorder_h recorder);
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
  * @post  recorder_recording_limit_reached_cb() will be invoked.
- * @see recorder_unset_recording_limit_reached_cb()
- * @see recorder_attr_set_size_limit()
- * @see recorder_attr_set_time_limit()
+ * @see	recorder_unset_recording_limit_reached_cb()
+ * @see	recorder_attr_set_size_limit()
+ * @see	recorder_attr_set_time_limit()
  * @see	recorder_recording_limit_reached_cb()
  */
 int recorder_set_recording_limit_reached_cb(recorder_h recorder, recorder_recording_limit_reached_cb callback, void *user_data);
@@ -1082,8 +1082,8 @@ int recorder_unset_recording_limit_reached_cb(recorder_h recorder);
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
  * @post	This function will invoke recorder_error_cb() when an asynchronous operation error occur.
- * @see recorder_unset_error_cb()
- * @see recorder_error_cb()
+ * @see	recorder_unset_error_cb()
+ * @see	recorder_error_cb()
  */
 int recorder_set_error_cb(recorder_h recorder, recorder_error_cb callback, void *user_data);
 
@@ -1097,7 +1097,7 @@ int recorder_set_error_cb(recorder_h recorder, recorder_error_cb callback, void 
  * @retval    #RECORDER_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
- * @see recorder_set_error_cb()
+ * @see	recorder_set_error_cb()
  */
 int recorder_unset_error_cb(recorder_h recorder);
 
@@ -1126,8 +1126,8 @@ int recorder_unset_error_cb(recorder_h recorder);
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
  * @pre The recorder state must be #RECORDER_STATE_CREATED or #RECORDER_STATE_READY.
- * @see recorder_attr_get_size_limit()
- * @see recorder_attr_set_time_limit()
+ * @see	recorder_attr_get_size_limit()
+ * @see	recorder_attr_set_time_limit()
  */
 int recorder_attr_set_size_limit(recorder_h recorder, int kbyte);
 
@@ -1142,8 +1142,8 @@ int recorder_attr_set_size_limit(recorder_h recorder, int kbyte);
  * @retval #RECORDER_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
- * @see recorder_attr_set_size_limit()
- * @see recorder_attr_get_time_limit()
+ * @see	recorder_attr_set_size_limit()
+ * @see	recorder_attr_get_time_limit()
  */
 int recorder_attr_get_size_limit(recorder_h recorder, int *kbyte);
 
@@ -1161,8 +1161,8 @@ int recorder_attr_get_size_limit(recorder_h recorder, int *kbyte);
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted
  * @retval #RECORDER_ERROR_NOT_SUPPORTED The feature is not supported
  * @pre The recorder state must be #RECORDER_STATE_CREATED or #RECORDER_STATE_READY.
- * @see recorder_attr_get_time_limit()
- * @see recorder_attr_set_size_limit()
+ * @see	recorder_attr_get_time_limit()
+ * @see	recorder_attr_set_size_limit()
  */
 int recorder_attr_set_time_limit(recorder_h recorder, int second);
 
@@ -1414,7 +1414,7 @@ int recorder_attr_get_audio_channel(recorder_h recorder, int *channel_count);
  * @since_tizen @if MOBILE 2.3 @elseif WEARABLE 2.3.1 @endif
  * @param[in]	recorder	The handle to a media recorder
  * @param[in]	orientation	The information of the video orientation
- * @return  @c 0 on success, otherwise a negative error value
+ * @return @c 0 on success, otherwise a negative error value
  * @retval #RECORDER_ERROR_NONE Successful
  * @retval #RECORDER_ERROR_INVALID_PARAMETER Invalid parameter
  * @retval #RECORDER_ERROR_PERMISSION_DENIED The access to the resources can not be granted

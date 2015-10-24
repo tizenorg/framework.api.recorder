@@ -11,7 +11,7 @@
 * distributed under the License is distributed on an "AS IS" BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 * See the License for the specific language governing permissions and
-* limitations under the License. 
+* limitations under the License.
 */
 
 
@@ -33,10 +33,9 @@ typedef union _mediaSource{
 
 typedef enum {
 	_RECORDER_EVENT_TYPE_STATE_CHANGE,
-	_RECORDER_EVENT_TYPE_RECORDING_LIMITED,	
+	_RECORDER_EVENT_TYPE_RECORDING_LIMITED,
 	_RECORDER_EVENT_TYPE_RECORDING_STATUS,
 	_RECORDER_EVENT_TYPE_INTERRUPTED,
-	_RECORDER_EVENT_TYPE_INTERRUPT_COMPLETED,
 	_RECORDER_EVENT_TYPE_AUDIO_STREAM,
 	_RECORDER_EVENT_TYPE_ERROR,
 	_RECORDER_EVENT_TYPE_NUM
@@ -66,7 +65,7 @@ typedef struct _recorder_s{
 	double last_max_input_level;
 } recorder_s;
 
-static int __convert_recorder_error_code(const char *func, int code);
+int __convert_recorder_error_code(const char *func, int code);
 #ifdef __cplusplus
 }
 #endif
